@@ -1,0 +1,5 @@
+#!/bin/bash
+
+WORDS=/usr/share/dict/words
+
+egrep -h -i $1 $WORDS 2> /dev/null | sort -u -f

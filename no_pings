@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+if [ -f /tmp/hosts.yp ] || [ -f /tmp/down-hosts ]; then
+   /bin/rm -f /tmp/hosts.yp
+	/bin/rm -f /tmp/down-hosts
+fi
+
+HOSTS=`ypcat hosts | awk '{print $2}' >> /tmp/hosts.yp`
+
+
+for k in `cat /tmp/hosts.yp` 
+do
+    ping -t 2 $k
+	 es=$?
+	 if [ $es -ne 0 ]; then
+	    echo $k >> /tmp/down-hosts
+    fi
+done
