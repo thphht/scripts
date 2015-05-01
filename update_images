@@ -1,6 +1,7 @@
 #!/bin/csh -f
 # script to run as cron to check for new files placed under
 # images_prod directory for upload to web servers.
+# DF 1999
 
 set SOURCEDIR=/usr2/images/images_prod
 set TARGETDIR=/home/httpd/images
