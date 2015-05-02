@@ -1,0 +1,24 @@
+#!/bin/csh -f
+# script to run as cron to check for new files placed under
+# images_prod directory for upload to web servers.
+# DF 1999
+
+set SOURCEDIR=/usr2/images/images_prod
+set TARGETDIR=/home/httpd/images
+
+cd $SOURCEDIR
+
+(find . -type f -amin -30 -print | tar Tcf - newfiles.tar >& /dev/null) 
+
+if (! -e newfiles.tar)  then
+  echo "no update this time..." | /usr/sbin/sendmail sysop 
+  exit 1
+endif
+
+foreach HOST (img1 img2 img3 img4)
+   rcp newfiles.tar ${HOST}:/home/httpd/images
+   rsh $HOST "cd /home/httpd/images;tar xvf newfiles.tar"
+end
+
+/bin/rm -f newfiles.tar
+/bin/rm -f UPDATE

@@ -1,0 +1,3 @@
+set terminal gif size 640, 480
+plot "cpu_usage" using 0:22 with lines
+

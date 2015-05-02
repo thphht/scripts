@@ -1,0 +1,10 @@
+set xlabel "MB used"
+set ylabel "name"
+set title "disk usage mmm1:/raid"
+unset key
+set logscale x
+
+set terminal png
+set output "/var/www/plots/du.png"
+
+plot [][10:1] "-" using 2:0:ytic(1)

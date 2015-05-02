@@ -1,0 +1,15 @@
+#!/bin/bash
+
+TMP=/scr/tmp.$$
+
+cd /net/timor/vol/home/
+du -ks -I .snapshot * |
+  sort -nr            |
+    sed 10q           |
+      while read used user 
+      do
+        echo "$user is using $used kB of disk space" >> $TMP 
+      done
+
+mail -s "daily top 10 homedir usage stats" xxx@yyy.com < $TMP
+/bin/rm -f $TMP
