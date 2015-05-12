@@ -1,0 +1,22 @@
+set title ''
+# can also pass "fontsize 12" to fig terminal
+#set terminal fig color depth 98
+
+set xlabel 'Volume Name' 0,-1
+set ylabel 'Disk Usage (MB)'
+set xtics rotate ("total" 1, "timor" 2, "fuga" 3, "unoma" 4, "snap" 5, "scr" 6)
+set format y "  %gx"
+
+set boxwidth 0.5
+set xrange [0:7]
+set yrange[0:5e7]
+set grid noxtics ytics
+set style fill solid
+plot  '-' notitle with boxes 3
+1, 25734618
+2, 9280369
+3, 13180946
+4, 3229431
+5, 43872
+6, 0
+e

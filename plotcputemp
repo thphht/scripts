@@ -1,0 +1,3 @@
+set terminal gif size 640, 480
+plot "cpu_temp" using 0:3 with lines
+

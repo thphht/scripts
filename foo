@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+FOODIR=/scr/foo
+
+if [ ! -e $FOODIR ]
+then
+    echo "not present"
+else
+    echo "seems to be present"
+fi

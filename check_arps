@@ -1,0 +1,1 @@
+sudo tcpdump -l -n arp | egrep 'arp who-has' | head -100 | awk '{print  $NF}' | sort | uniq -c |sort -n

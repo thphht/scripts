@@ -1,0 +1,5 @@
+#% find . -type f -ls -exec /bin/sum {} \; | nawk '{ print$1 " " $2 " " $11 }'
+#% find . -type f  -exec /bin/cksum {} \; | nawk '{ print$1 "     " $2 "     " $3 }'
+find . -type f -exec /usr/bin/cksum {} \; | awk '{  printf("%10d\t%10d\t%s\n",$1,$2,$3) }'
+
+find . -type f -exec /usr/bin/cksum {} \; | sort | awk '{  printf("%10d\t%10d\t%s\n",$1,$2,$3) }'

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+umask 077
+
+TMP=tmp.$$
+OLDSHADOW=$1
+NEWSHADOW=shadow.converted
+
+
+awk -F: '{print $1 ":" $2}' > $TMP
+join -t: $TMP $OLDSHADOW | cut -d: -f 3 --complement > $NEWSHADOW 
+

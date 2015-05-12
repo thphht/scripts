@@ -1,0 +1,10 @@
+yformat=%gx
+xlabel=Benchmark
+ylabel=Memory usage versus code size
+
+total  25734618 
+timor  9280369
+fuga   13180946
+unoma  3229431
+snap   43872
+scr    0
